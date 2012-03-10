@@ -1,0 +1,3 @@
+priority: mean priority between handlers on a log object to decide what will be the case to choose on log.
+sublog: means child of main or upper log object 
+loglevel: we have some builtin loglevel thet they by the way define format of output each log line.

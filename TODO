@@ -1,0 +1,9 @@
+
+Fri Mar  9 16:49:42 IRST 2012
+1. convert to a git reposity
+2. implement log level 
+3. implement log child
+4. implement log schaduler
+5. decide about default parameter
+6. use keywork arg instead of tuplearg
+
