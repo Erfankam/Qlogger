@@ -33,13 +33,14 @@ time qlog format
 '''
 '''
 To Fix:
-    1- user regular expression instead of replace for each statement                        ... has done.
-    2- let user use special characters like % and other followers                            ... had done.
-    3- Dynamic assinment of calculation functions.                                          ... had done.
+    1- user regular expression instead of replace for each statement        ... has done.
+    2- let user use special characters like % and other followers           ... had done.
+    3- Dynamic assinment of calculation functions.                          ... had done.
     4- fix log name(object) and log type fields in class
     5- add get code detail class or function to attrdict to get attributes.
     6- big and huge empty space or string when use %%dt%d.
     7. Emitting space in regullar expresion substituation                                   ... has done.
+    8. Change handler list to handler dic keeping object id.
 '''
 
 attrDict = {}
@@ -177,8 +178,10 @@ class EKlogger:
 
         # level of all handler means total log level self.__level = None
         # means sublog self.__child = {}
+        # FIXME what is this "name and counter"
         self.__name = None
         self.__counter = 0
+        ##################
         
     def __del__(self):
         pass
@@ -202,13 +205,18 @@ class EKlogger:
         newChild = EKlogger( logName )
         self.__child.__setitem__(logName, newChild)
 
+    # FIXME use keyword arg instead tuple avoiding wrong arg pass    
     def Qlog(self, message=None, argTuple=None, logLevel=None):
         """
         Use under multi perpose log.
         """
         logStack = inspect.stack()[-1]
+        print "loglevel = ", logLevel
         for handler in self.__handler:
-            handler.log(self.__logName + message, argTuple, logStack, logLevel)
+            handler.log(self.__logName + message, \
+                        argTuple, 
+                        logStack, 
+                        logLevel)
         # delete and destructor the stack avoiding crash
         del logStack
 
@@ -256,10 +264,11 @@ class EKlogger:
     def setLogName(self, logName):
         self.__logName = logName
     def setLogLevel(self, logLevel):
-        for handler in self.__handlers:
+        for handler in self.__handler:
             handler.setLogLevel(logLevel)
 
 class Handler:
+    #__logLevel = None
 
     def __new__(self):
         pass
@@ -286,7 +295,10 @@ class Handler:
     # TODO
     def setLogFormatter(self, logSchaduler):
         self.__logSchduler = logSchaduler
-    
+
+    def log(self, logString, argTuple, logStack, logLevel):
+        pass
+
 class StreamHandler(Handler):
     pass
 
@@ -299,11 +311,13 @@ class FileHandler(Handler):
     __nowTime = None
     __elapsedTime = None
 
-    def __new__(*args, **kwargs):
+    def __new__(cls, *args, **kwargs):
         pass
 
     def __init__(self, path=None, descr=None, logFormat=None):
+        # Just for some reason
         Handler.__init__(self)
+        self.__logLevel = None
         self.__path = path
         self.__descr = descr
         self.__logFormatter = None
@@ -314,7 +328,7 @@ class FileHandler(Handler):
         # lock for mutual exclusion
         self.__lock = None
         self.__initialize(path, descr, logFormat)
-        pass
+        print dir(self)
 
     def __str__(self):
         pass

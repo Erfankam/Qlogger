@@ -1,0 +1,31 @@
+ | date time: must affect>>> 2012-03-11 23:48:07.761393
+ | platform name: linux2 
+ | module name: Module Name 
+ | class name: class Name
+ | log name: 24 
+ | log object: None 
+ | function name: <module>
+ | document string: None
+ | platform name: linux2 
+ | log type: Log Type
+ | standard input: <closed file '<stdin>', mode 'r' at 0x7f1da2dd3150>
+ | standard output: <open file '<stdout>', mode 'w' at 0x7f1da2dd31e0> 
+ | standard error: <open file '<stderr>', mode 'w' at 0x7f1da2dd3270>
+ | thread id: <Thread(Thread-3, started 139765227501312)>
+ | process id: 5485
+ | user log: Qazal logger module test suite and its argumentje suis pret  
+ 
+->Erfan : Erfan
+- Qazal : Qazal 
+ ################################# 
+and its args is 
+ 
+->Erfan : Erfan
+- Qazal : Qazal 
+
+ | os version: 2.6.38-8-generic
+ | file address: log_test.py| os arch: x86_64 
+ | os family: posix
+ | os name: Linux
+ | host name: Erfankam-linux-0701
+ >>> test: 2012-03-11 23:48:07.761393%%dt  <Thread(Thread-3, started 139765227501312)><Thread(Thread-3, started 139765227501312)><Thread(Thread-3, started 139765227501312)>

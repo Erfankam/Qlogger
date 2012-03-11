@@ -1,6 +1,7 @@
 
 Fri Mar  9 16:49:42 IRST 2012
-1. convert to a git reposity
+1. convert to a git reposity	done: at Sat Mar 10 11:32:43 IRST 2012
+ 1.1. rename files related to the project.
 2. implement log level 
 3. implement log child
 4. implement log schaduler
